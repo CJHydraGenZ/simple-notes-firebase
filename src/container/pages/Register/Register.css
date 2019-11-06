@@ -36,17 +36,35 @@
 
 .btn-register {
     margin: 0 auto;
-    border: 1px solid rgb(119, 119, 255);
-    background-color: white;
-    width: 100px;
+    border: none;
+    background-color: blue;
+    width: 150px;
     border-radius: 4px;
-    color: blue;
+    outline: none;
+    color: white;
+    font-family: sans-serif;
+    font-weight: 700;
     transition: .5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .btn-register:hover {
     /* padding: 4px; */
     cursor: pointer;
-    border: 1px solid grey;
-    color: grey;
+    /* border: 1px solid b; */
+    color: rgb(176, 176, 255);
+
+}
+
+.btn-disable {
+    margin: 0 auto;
+    border: none;
+    outline: none;
+    background-color: gray;
+    width: 150px;
+    border-radius: 4px;
+    color: white;
+    font-family: sans-serif;
+    font-weight: 700;
+    transition: .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
 }
