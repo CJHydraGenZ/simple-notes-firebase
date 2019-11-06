@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import firebase from '../../../config/firebase'
+import './Register.css'
+
 
 class Register extends Component {
     state = {
@@ -45,7 +47,7 @@ class Register extends Component {
 
                     <p className="auth-title">Register Page</p>
                     <input className="input" id="email" type="text" placeholder="Email" onChange={this.handleChangeText} />
-                    <input className="input" id="password" type="password" placeholder="Paswword" onChange={this.handleChangeText} />
+                    <input className="input" id="password" type="password" placeholder="Password" onChange={this.handleChangeText} />
                     <button className="btn-register" onClick={this.handleRegisterSubmit}>Register</button>
                     {/* <button>Go to Dasbord</button> */}
                 </div>
