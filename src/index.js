@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './container/pages/App/index.jsx';
 import * as serviceWorker from './serviceWorker';
-import firebase from './config/firebase'
+// import firebase from './config/firebase'
 
 
-console.log('config firebawe', firebase);
+// console.log('config firebawe', firebase);
 
 
 
