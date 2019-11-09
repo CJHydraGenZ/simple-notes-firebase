@@ -3,7 +3,7 @@
 const initialState = {
     popup: false,
     isLogin: false,
-    user: 'cahya',
+    user: {},
     isLoading: false
 }
 const reduser = (state = initialState, action) => {
