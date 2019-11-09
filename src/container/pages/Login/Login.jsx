@@ -28,8 +28,8 @@ class Login extends Component {
 
 
         const res = await this.props.loginAPI({ email, password }).catch(err => err)
-        if (res === true) {
-            console.log('login secsesss');
+        if (res) {
+            console.log('login secsesss', res);
 
             this.setState({
                 email: '',

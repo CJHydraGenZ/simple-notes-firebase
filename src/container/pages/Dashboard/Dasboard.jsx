@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './Dasboard.css'
 
 
 class Dasboard extends Component {
@@ -9,11 +9,22 @@ class Dasboard extends Component {
         return (
 
 
-            <div>
+            <div className="container">
 
-                <p>DasBoard Page</p>
-                <button>Go to Register</button>
-                <button>Go to Dasbord</button>
+                <div className="form">
+                    <input placeholder='title' type="text" name="" id="title-input" />
+                    <textarea placeholder='content' name="" id="text-area"></textarea>
+                    <button className="btn-simpan">Simpan</button>
+                </div>
+
+
+                <hr />
+                <div className="post">
+                    <p className="title-post">title</p>
+                    <p className="tgl">tanggal 2112</p>
+                    <p className="content-post">Content</p>
+                </div>
+
             </div>
         )
     }
