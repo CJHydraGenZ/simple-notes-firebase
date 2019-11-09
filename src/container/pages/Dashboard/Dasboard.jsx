@@ -1,10 +1,35 @@
 import React, { Component } from 'react'
 import './Dasboard.css'
-
+import { addDataToApi } from '../../../config/redux/action/action'
+import { connect } from 'react-redux'
 
 class Dasboard extends Component {
-    render() {
+    state = {
+        title: '',
+        content: '',
+        date: ''
+    }
+    handleSaveNote = () => {
+        const { title, content } = this.state
+        const { savedNotes } = this.props
+        const data = {
+            title: title,
+            content: content,
+            date: new Date().getTime(),
+            userId: this.props.userData.uid
+        }
+        savedNotes(data)
+        console.log(data);
 
+    }
+    oninputChange = (e, type) => {
+        this.setState({
+            [type]: e.target.value
+        })
+    }
+
+    render() {
+        const { title, content, date } = this.state
 
         return (
 
@@ -12,9 +37,9 @@ class Dasboard extends Component {
             <div className="container">
 
                 <div className="form">
-                    <input placeholder='title' type="text" name="" id="title-input" />
-                    <textarea placeholder='content' name="" id="text-area"></textarea>
-                    <button className="btn-simpan">Simpan</button>
+                    <input placeholder='title' type="text" name="" id="title-input" value={title} onChange={(e) => this.oninputChange(e, 'title')} />
+                    <textarea placeholder='content' name="" id="text-area" value={content} onChange={(e) => this.oninputChange(e, 'content')} ></textarea>
+                    <button className="btn-simpan" onClick={this.handleSaveNote}>Simpan</button>
                 </div>
 
 
@@ -30,4 +55,12 @@ class Dasboard extends Component {
     }
 }
 
-export default Dasboard
+const reduxState = (state) => ({
+    userData: state.user
+})
+
+const reduxDispatch = (dispatch) => ({
+    savedNotes: (data) => dispatch(addDataToApi(data))
+})
+
+export default connect(reduxState, reduxDispatch)(Dasboard)

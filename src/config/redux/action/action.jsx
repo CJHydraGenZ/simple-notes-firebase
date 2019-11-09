@@ -1,4 +1,4 @@
-import firebase from '../../firebase/index'
+import firebase, { database } from '../../firebase/index'
 
 export const actionUserName = () => (dispatch) => {
     setTimeout(() => {
@@ -66,5 +66,13 @@ export const LoginUserApi = (data) => (dispatch) => {
             reject(false)
             // ...
         })
+    })
+}
+
+export const addDataToApi = (data) => (dispatch) => {
+    database.ref('notes/' + data.userId).push({
+        title: data.title,
+        content: data.content,
+        date: data.date
     })
 }
