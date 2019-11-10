@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import './Dasboard.css'
 import { addDataToApi, getDataFromApi, updateDataApi, deleteDataApi } from '../../../config/redux/action/action'
 import { connect } from 'react-redux'
+import swal from '@sweetalert/with-react'
 
 class Dasboard extends Component {
 	state = {
@@ -9,7 +10,8 @@ class Dasboard extends Component {
 		content: '',
 		date: '',
 		textButton: 'SIMPAN',
-		noteId: ''
+		noteId: '',
+		hapus: false
 	}
 
 	componentDidMount() {
@@ -31,11 +33,13 @@ class Dasboard extends Component {
 		}
 		console.log(data);
 		if (textButton === 'SIMPAN') {
-			savedNotes(data)
+			swal("Good job!", "You clicked the button!", "success").then(savedNotes(data))
+
 
 		} else {
 			data.noteId = noteId
-			updateNotes(data)
+			swal("Good job!", "You clicked the button!", "success").then(updateNotes(data))
+
 		}
 
 	}
@@ -67,13 +71,35 @@ class Dasboard extends Component {
 	deleteNote = (e, note) => {
 		e.stopPropagation()
 		const { deleteNote } = this.props
+
+		console.log(this.state);
+
 		const userData = JSON.parse(localStorage.getItem('userData'))
 		const data = {
 
 			userId: userData.uid,
 			noteId: note.id
 		}
-		deleteNote(data)
+		swal({
+			title: "Are you sure?",
+			text: "Once deleted, you will not be able to recover this imaginary file!",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+			.then(hapus => {
+				if (hapus) {
+					deleteNote(data)
+					swal("Poof! Your imaginary file has been deleted!", {
+						icon: "success",
+					});
+				} else {
+					swal("Your imaginary file is safe!");
+
+				}
+			});
+
+
 	}
 	render() {
 		// console.log(this);

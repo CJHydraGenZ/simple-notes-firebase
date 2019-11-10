@@ -1,5 +1,5 @@
 import firebase, { database } from '../../firebase/index'
-
+import swal from '@sweetalert/with-react'
 export const actionUserName = () => (dispatch) => {
     setTimeout(() => {
         return dispatch({
@@ -85,7 +85,9 @@ export const getDataFromApi = (userId) => (dispatch) => {
 
         urlNotes.on('value', function (snapshot) {
             if (snapshot.val() === null) {
-                alert('Data Belum Ada')
+
+
+                swal("Hello world!");
             } else {
 
                 const data = []
@@ -135,6 +137,7 @@ export const deleteDataApi = (data) => (dispatch) => {
     return new Promise((resolve, reject) => {
 
         urlNotes.remove()
+
 
     });
 }
