@@ -10,7 +10,8 @@
 
 #title-input,
 #text-area,
-.btn-simpan {
+.btn-simpan,
+.btn-cencel {
     border-radius: 4px;
     border: 2px solid rgb(186, 255, 186);
     padding: 8px;
@@ -43,12 +44,20 @@
 .post {
     display: grid;
     grid-template-rows: 20px auto auto;
-    margin: auto;
+    margin: 10px auto;
     width: 800px;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
     padding: 6px;
     box-sizing: border-box;
+    transition: .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.post:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    transform: translateY(-4px);
 }
 
 .title-post {
@@ -67,7 +76,43 @@ hr {
 
 .content-post {
     font-family: sans-serif;
-    color: rgb(29, 29, 29);
+    /* color: rgb(29, 29, 29); */
     font-weight: 400;
     font-size: large;
+}
+
+.tgl {
+    margin-top: 15px;
+
+    font-size: 12px;
+}
+
+.action-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin: auto;
+    box-sizing: border-box;
+
+}
+
+.btn-cencel {
+    margin: 0 5px;
+    width: 200px;
+    background-color: white;
+
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: bold;
+    transition: .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    color: rgb(179, 255, 0);
+    border-color: rgb(179, 255, 0);
+
+}
+
+.btn-cencel:hover {
+    background-color: rgb(179, 255, 0);
+    color: white;
+    border: none;
+    cursor: pointer;
 }

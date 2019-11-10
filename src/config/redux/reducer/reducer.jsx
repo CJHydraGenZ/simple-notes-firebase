@@ -4,7 +4,8 @@ const initialState = {
     popup: false,
     isLogin: false,
     user: {},
-    isLoading: false
+    isLoading: false,
+    notes: []
 }
 const reduser = (state = initialState, action) => {
 
@@ -30,6 +31,12 @@ const reduser = (state = initialState, action) => {
         return {
             ...state,
             isLoading: action.value
+        }
+    }
+    if (action.type === 'SET_NOTES') {
+        return {
+            ...state,
+            notes: action.value
         }
     }
 

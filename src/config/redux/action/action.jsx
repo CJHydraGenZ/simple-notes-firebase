@@ -76,3 +76,56 @@ export const addDataToApi = (data) => (dispatch) => {
         date: data.date
     })
 }
+
+
+
+export const getDataFromApi = (userId) => (dispatch) => {
+    const urlNotes = database.ref('notes/' + userId);
+    return new Promise((resolve, reject) => {
+
+        urlNotes.on('value', function (snapshot) {
+            if (snapshot.val() === null) {
+                alert('Data Belum Ada')
+            } else {
+
+                const data = []
+
+                console.log(snapshot.val());
+
+                Object.keys(snapshot.val()).map(key => {
+                    data.push({
+                        id: key,
+                        data: snapshot.val()[key]
+                    })
+                })
+                dispatch({
+                    type: 'SET_NOTES',
+                    value: data
+                })
+                resolve(data)
+                console.log('Data Anda:', data);
+            }
+        })
+
+    });
+}
+
+
+export const updateDataApi = (data) => (dispatch) => {
+    const urlNotes = database.ref(`notes/${data.userId}/${data.noteId}`);
+    return new Promise((resolve, reject) => {
+
+        urlNotes.set({
+            title: data.title,
+            content: data.content,
+            date: data.date
+        }, (err) => {
+            if (err) {
+                reject(false)
+            } else {
+                resolve(true)
+            }
+        })
+
+    });
+}

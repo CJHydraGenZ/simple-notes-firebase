@@ -31,6 +31,7 @@ class Login extends Component {
         if (res) {
             console.log('login secsesss', res);
 
+            localStorage.setItem('userData', JSON.stringify(res))
             this.setState({
                 email: '',
                 password: ''
